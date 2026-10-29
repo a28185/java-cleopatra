@@ -5,9 +5,10 @@ import java.util.StringTokenizer;
 public class Main {
 
     static int distancia (int x, int y) {
-        if (x < 0 && y <0) {
-
+        if ((x < 0 && y <0) || (x > 0 && y < 0)) {
+            return Math.abs(x - y) - 1;
         }
+        return Math.abs(x - y);
     }
 
     public static void main(String[] args) throws Exception {
@@ -25,13 +26,17 @@ public class Main {
                 int A = Integer.parseInt(st.nextToken());
                 int B = Integer.parseInt(st.nextToken());
                 int C = Integer.parseInt(st.nextToken());
+                int dtA = distancia(A, B);
+                int dtC = distancia(C, B);
+                if (dtA < dtC) {
+                    out.println(A);
+                } else if (dtC > dtA) {
+                    out.println(C);
+                } else {
+                    out.println("Empate");
+                }
             }
+            out.flush();
         }
-
-
-
-
-
-
     }
 }
